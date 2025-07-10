@@ -186,7 +186,26 @@ class TestMatmul(TestCase):
             [1, 2, 3, 4, 5, 6, 7, 8, 9], 3, 3,
             [30, 36, 42, 66, 81, 96, 102, 126, 150]
         )
+    def test_2x3Dot3x2(self):
+        self.do_matmul(
+            [1, 0, 2, -1, 3, 1], 2, 3,
+            [3, 1, 2, 1, 1, 0], 3, 2,
+            [5, 1, 4, 2]
+        )
 
+    def test_3x2Dot2x3(self):
+        self.do_matmul(
+            [1, 0, 2, -1, 3, 1], 3, 2,
+            [3, 1, 2, 1, 1, 0], 2, 3,
+            [3, 1, 2, 5, 1, 4, 10, 4, 6]
+        )
+
+    def test_zero(self):
+        self.do_matmul(
+            [0, 0], 1, 2,
+            [0, 0], 2, 1,
+            [0]
+        )
     @classmethod
     def tearDownClass(cls):
         print_coverage("matmul.s", verbose=False)
@@ -204,14 +223,14 @@ class TestReadMatrix(TestCase):
         cols = t.array([-1])
 
         # load the addresses to the output parameters into the argument registers
-        raise NotImplementedError("TODO")
-        # TODO
-
+        t.input_array("a1", rows)
+        t.input_array("a2", cols)
+        
         # call the read_matrix function
         t.call("read_matrix")
 
         # check the output from the function
-        # TODO
+        t.check_array_pointer("a0", [1,2,3,4,5,6,7,8,9])
 
         # generate assembly and run it through venus
         t.execute(fail=fail, code=code)
