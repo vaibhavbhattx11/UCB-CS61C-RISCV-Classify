@@ -1,28 +1,5 @@
-# fa20-proj2-starter
+# Digit Classifier using RISC-V Assembly
 
-```
-.
-├── inputs (test inputs)
-├── outputs (some test outputs)
-├── README.md
-├── src
-│   ├── argmax.s (partA)
-│   ├── classify.s (partB)
-│   ├── dot.s (partA)
-│   ├── main.s (do not modify)
-│   ├── matmul.s (partA)
-│   ├── read_matrix.s (partB)
-│   ├── relu.s (partA)
-│   ├── utils.s (do not modify)
-│   └── write_matrix.s (partB)
-├── tools
-│   ├── convert.py (convert matrix files for partB)
-│   └── venus.jar (RISC-V simulator)
-└── unittests
-    ├── assembly (contains outputs from unittests.py)
-    ├── framework.py (do not modify)
-    └── unittests.py (partA + partB)
-```
-
-
-## Here's what I did in project 2:
+Inference model for classifying handwritten digits (0-9), uses pretrained weights on MNIST dataset.
+All source code written in RISC-V assembly language.
+Project 2 in UC Berkeley CS61C FA20 (https://csdiy.wiki/en/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/CS61C/).
